@@ -82,10 +82,10 @@ public class Display extends JPanel implements KeyListener {
 		g2d.setBackground(c2);
 		g2d.clearRect(0,0,w,h);
 		
-		g.setColor(Color.green);
+		g.setColor(Color.white);
 		g.fillRect(offsetX, offsetY, cellSize, cellSize);
 		
-		g.setColor(Color.red);
+		g.setColor(Color.white);
 		g.fillRect(m1.sizeX*cellSize-offsetX,m1.sizeY*cellSize-offsetY,cellSize,cellSize);
 		
 		g.setColor(c1);
@@ -150,15 +150,16 @@ public class Display extends JPanel implements KeyListener {
 		}
 		
 		g2d.drawString("Moves: " + moveCounter.toString(), m1.sizeX*cellSize + offsetX + 20, 20);
-		g2d.drawString("To Move Use Arrow Keys", m1.sizeX*cellSize + offsetX + 20, 40);
-		g2d.drawString("or WASD", m1.sizeX*cellSize + offsetX + 20, 52);
+		g2d.drawString("To Move Use Arrow Keys", m1.sizeX*cellSize + offsetX + 20, 60);
+		g2d.drawString("or WASD", m1.sizeX*cellSize + offsetX + 20, 72);
+		g2d.drawString("Press 'Esc' to quit", m1.sizeX*cellSize + offsetX + 20, 112);
 		
 		if (y == m1.sizeY-1 && x == m1.sizeX-1) {
 			System.out.println("Winner!");
 			g2d.drawString("You Won!", m1.sizeX*cellSize + offsetX + 20, 100);
 		}
 	
-		g.setColor(Color.red);
+		g.setColor(Color.black);
 		g.fillRect(pointX-offsetX/3, pointY-offsetY/3, cellSize/3, cellSize/3);
 	
 	}
@@ -198,6 +199,9 @@ public class Display extends JPanel implements KeyListener {
 			if (pointX > getBounds().width) {
 				pointX = getBounds().width;
 			}
+		}
+		if (key.getKeyCode() == key.VK_ESCAPE) {
+			System.exit(0);
 		}
 		
 		repaint();
