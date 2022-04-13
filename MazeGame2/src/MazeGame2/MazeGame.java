@@ -28,19 +28,6 @@ public class MazeGame extends JFrame implements ActionListener{
     String[] theme = {"Red / Green", "Orange / Blue", "Yellow / Purple"};
     JComboBox<String> cs = new JComboBox<String>(theme);
     
-	public void colors() {
-	if(theme.equals("Red / Green")){
-		c1 = red;
-		c2 = green;
-	}else if(theme.equals("Orange / Blue")){
-		c1 = blue;
-		c2 = orange;
-	}else if(theme.equals("Yellow / Purple")){
-		c1 = purple;
-		c2 = yellow;
-	}
-	}
-	
 	public MazeGame() {
 		startScreen();
 	}
@@ -102,8 +89,6 @@ public class MazeGame extends JFrame implements ActionListener{
 		
 		cd.addActionListener(this);
 		cs.addActionListener(this);
-		
-		colors();
 	}
 	
 	public void actionPerformed(ActionEvent e) {
@@ -127,16 +112,16 @@ public class MazeGame extends JFrame implements ActionListener{
 		}
 		if (e.getSource() == cs) {
 			if (cd.getSelectedItem() == "Red / Green") {
-				c1 = Color.black;
-				c2 = Color.cyan;
+				c1 = red;
+				c2 = green;
 			}
 			else if (cd.getSelectedItem() == "Orange / Blue") {
-				c1 = Color.green;
-				c2 = Color.white;
+				c1 = blue;
+				c2 = orange;
 			}
 			else if (cd.getSelectedItem() == "Yellow / Purple") {
-				c1 = Color.yellow;
-				c2 = Color.black;
+				c1 = purple;
+				c2 = yellow;
 			}
 		}
 	}
