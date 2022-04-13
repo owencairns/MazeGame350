@@ -12,15 +12,34 @@ public class MazeGame extends JFrame implements ActionListener{
 	int sizeX = 10;
 	int sizeY = 10;
 	int cellSize = 20;
-	Color c1 = Color.black;
-	Color c2 = Color.cyan;
+	Color red = new Color(173, 32, 0);
+	Color orange = new Color(255, 181, 61);
+	Color yellow = new Color(253, 255, 120);
+	Color green = new Color(182, 255, 179);
+	Color blue = new Color(15, 138, 191);
+	Color purple = new Color(115, 76, 173);
+	Color c1 = purple;
+	Color c2 = yellow;
 
 	JFrame frame = new JFrame();
 	JButton playButton = new JButton("Play");
 	String[] difficulty = { "Easy", "Medium", "Hard"};
     JComboBox<String> cd = new JComboBox<String>(difficulty);    
-    String[] theme = {"black/cyan", "green/white", "yellow/black"};
+    String[] theme = {"Red / Green", "Orange / Blue", "Yellow / Purple"};
     JComboBox<String> cs = new JComboBox<String>(theme);
+    
+	public void colors() {
+	if(theme.equals("Red / Green")){
+		c1 = red;
+		c2 = green;
+	}else if(theme.equals("Orange / Blue")){
+		c1 = blue;
+		c2 = orange;
+	}else if(theme.equals("Yellow / Purple")){
+		c1 = purple;
+		c2 = yellow;
+	}
+	}
 	
 	public MazeGame() {
 		startScreen();
@@ -83,6 +102,8 @@ public class MazeGame extends JFrame implements ActionListener{
 		
 		cd.addActionListener(this);
 		cs.addActionListener(this);
+		
+		colors();
 	}
 	
 	public void actionPerformed(ActionEvent e) {
@@ -105,15 +126,15 @@ public class MazeGame extends JFrame implements ActionListener{
 			}
 		}
 		if (e.getSource() == cs) {
-			if (cd.getSelectedItem() == "black/cyan") {
+			if (cd.getSelectedItem() == "Red / Green") {
 				c1 = Color.black;
 				c2 = Color.cyan;
 			}
-			else if (cd.getSelectedItem() == "green/white") {
+			else if (cd.getSelectedItem() == "Orange / Blue") {
 				c1 = Color.green;
 				c2 = Color.white;
 			}
-			else if (cd.getSelectedItem() == "yellow/black") {
+			else if (cd.getSelectedItem() == "Yellow / Purple") {
 				c1 = Color.yellow;
 				c2 = Color.black;
 			}
