@@ -9,6 +9,8 @@ import java.awt.Graphics2D;
 import java.awt.Insets;
 import java.awt.event.*;
 import java.awt.geom.Path2D;
+
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
@@ -251,12 +253,19 @@ public class Display extends JPanel implements KeyListener {
 			}
 		}
 		if (key.getKeyCode() == key.VK_ESCAPE) {
-			System.exit(0);
+			MazeGame mg = new MazeGame();
+			mg.setVisible(true);
+			dispose();
 		}
 
 		repaint();
 	}
 
+	public void dispose() {
+	    JFrame parent = (JFrame) this.getTopLevelAncestor();
+	    parent.dispose();
+	}
+	
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 	}
