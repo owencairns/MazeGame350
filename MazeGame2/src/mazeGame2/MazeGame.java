@@ -1,4 +1,4 @@
-package MazeGame2;
+package mazeGame2;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -9,6 +9,13 @@ import java.awt.Graphics2D;
 
 import javax.swing.*;
 
+/*
+ * Main Launch Class for MazeGame
+ * Creates a simple start menu where player can choose difficulty and theme
+ * This start menu then launches into Display.java where the game is played
+ * 
+ * @Author Owen, Kren, Alex
+ */
 @SuppressWarnings("serial")
 public class MazeGame extends JFrame implements ActionListener {
 	int sizeX = 10;
@@ -32,10 +39,18 @@ public class MazeGame extends JFrame implements ActionListener {
 	String[] theme = { "Red / Green", "Orange / Blue", "Yellow / Purple" };
 	JComboBox<String> cs = new JComboBox<String>(theme);
 
+	/*
+	 * Class Constructor for maze game
+	 * Just launches the start screen
+	 * 
+	 */
 	public MazeGame() {
 		startScreen();
 	}
 
+	/*
+	 * main
+	 */
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -45,6 +60,13 @@ public class MazeGame extends JFrame implements ActionListener {
 		});
 	}
 
+	/*
+	 * 
+	 * creates an object of Display to be used
+	 * this is the maze display
+	 * sets it up based on difficulty and theme
+	 * 
+	 */
 	public void initUI() {
 
 		Maze m1 = new Maze(sizeX, sizeY);
@@ -59,7 +81,12 @@ public class MazeGame extends JFrame implements ActionListener {
 		disp.setFocusable(true);
 		setLocationRelativeTo(null);
 	}
-
+	
+	/*
+	 * the main menu screen where you are able to launch into the maze game,
+	 * change the color or difficulty in drop-down menus
+	 * 
+	 */
 	public void startScreen() {
 
 		JPanel panel = new JPanel();
@@ -108,7 +135,7 @@ public class MazeGame extends JFrame implements ActionListener {
 			} else if (cd.getSelectedItem() == "Hard") {
 				sizeX = 30;
 				sizeY = 30;
-		}
+			}
 		}
 		if (e.getSource() == cs) {
 			if (cs.getSelectedItem() == "Red / Green") {
